@@ -1,0 +1,80 @@
+.meteoitem {
+  min-height: 100vh;
+}
+
+.search-box {
+  width: 100%;
+  padding-top: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.search-bar {
+  display: block;
+  width: 80%;
+  padding: 15px;
+  border-radius: 10px;
+  border: solid 1px;
+  height: 50px;
+  background-color: rgb(207, 207, 207);
+  outline: none;
+  font-size: 20px;
+  color: #313131;
+  box-shadow: 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+.search-bar:focus {
+  background-color: rgb(255, 255, 255);
+}
+
+.meteo-item-card {
+  width: 80%;
+  height: 400px;
+  /*background-color: white;*/
+  border-radius: 10px;
+  margin: 120px auto;
+  /*box-shadow: 0px 5px rgba(0, 0, 0, 0.2);*/
+  text-align: center;
+  font-size: 35px;
+}
+
+.Logo, .City, .Temp, .Humidity {
+  color: white;
+}
+
+.Logo {
+  filter: brightness(0) invert(1);
+}
+
+.Temp {
+  font-size: 100px;
+  height: 128px;
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.City {
+  font-size: 25px;
+}
+
+.first-box {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 10px;
+}
+
+.Marker {
+  filter: brightness(0) invert(1);
+  height: 20px;
+  width: 20px;
+  margin-right: 10px;
+}
+
+.city-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
