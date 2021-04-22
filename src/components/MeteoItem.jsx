@@ -6,6 +6,18 @@ import logo02d from './icons/02d.png';
 import logo02n from './icons/02n.png';
 import logo03d from './icons/03d.png';
 import logo03n from './icons/03n.png';
+import logo04d from './icons/04d.png';
+import logo04n from './icons/04n.png';
+import logo09d from './icons/09d.png';
+import logo09n from './icons/09n.png';
+import logo10d from './icons/10d.png';
+import logo10n from './icons/10n.png';
+import logo11d from './icons/11d.png';
+import logo11n from './icons/11n.png';
+import logo13d from './icons/13d.png';
+import logo13n from './icons/13n.png';
+import logo50d from './icons/50d.png';
+import logo50n from './icons/50n.png';
 import React from 'react';
 import axios from 'axios';
 import Marker from './icons/location-pin.png'
@@ -46,8 +58,7 @@ function MeteoItem() {
       .then((response) => response.data)
       .then((data) => {
         setQuery('');
-        setWeather(data);
-        console.log(data);
+        setWeather(data);;
       })
     }
   }
@@ -68,7 +79,7 @@ function MeteoItem() {
       <div className='meteo-item-card'>
         <div className='first-box'>
           <p className='Temp'>{Math.round(weather.main.temp)}°</p>
-          <img className='Logo' src={`icons/${weather.weather[0].icon}.png`}/>
+          <img className='Logo' src={`logo${weather.weather[0].icon}`} alt=""/>
         </div>
         <div className='second-box'>
           <div className='city-box'>
