@@ -21,6 +21,7 @@
   font-size: 20px;
   color: #313131;
   box-shadow: 0px 5px rgba(0, 0, 0, 0.2);
+  font-family: 'Poppins', sans-serif;
 }
 
 .search-bar:focus {
@@ -44,6 +45,8 @@
 
 .Logo {
   filter: brightness(0) invert(1);
+  height: 100px;
+  width: 100px;
 }
 
 .Temp {
@@ -76,5 +79,45 @@
 .city-box {
   display: flex;
   align-items: center;
-  justify-content: center;
+  margin-left: 38px;
+}
+
+.meteoListItem {
+  position: fixed;
+  bottom: 90px;
+  width: 100%;
+  height: 90px;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.meteoListItem2 {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  height: 90px;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.tempList {
+  font-size: 30px;
+  height: 128px;
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
+.logoList {
+  filter: brightness(0) invert(1);
+  height: 70px;
+  width: 70px;
 }

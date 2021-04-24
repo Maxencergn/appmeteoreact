@@ -20,13 +20,18 @@ import logo50d from './icons/50d.png';
 import logo50n from './icons/50n.png';
 import React from 'react';
 import axios from 'axios';
-import Marker from './icons/location-pin.png'
+import Marker from './icons/location-pin.png';
 import { useState, useEffect } from 'react';
+
+const logoMeteo = {
+  dataLogo01d: logo01d,
+  dataLogo01n: logo01n,
+};
 
 const api = {
   key: '01698a252afb4707d33caaa8928240ad',
-  base: 'https://api.openweathermap.org/data/2.5/'
-}
+  base: 'https://api.openweathermap.org/data/2.5/',
+};
 
 function MeteoItem() {
   // User Location
@@ -52,45 +57,89 @@ function MeteoItem() {
   const [query, setQuery] = useState('');
   const [weather, setWeather] = useState({});
 
-  const search = event => {
-    if (event.key === "Enter") {
-      axios.get(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
-      .then((response) => response.data)
-      .then((data) => {
-        setQuery('');
-        setWeather(data);;
-      })
+  const search = (event) => {
+    if (event.key === 'Enter') {
+      axios
+        .get(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
+        .then((response) => response.data)
+        .then((data) => {
+          setQuery('');
+          setWeather(data);
+        });
     }
-  }
+  };
 
   return (
     <div className='meteoitem'>
       <div className='search-box'>
         <input
-          type="city"
-          className="search-bar"
-          placeholder="Search..."
+          type='city'
+          className='search-bar'
+          placeholder='Search...'
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onKeyPress={search}
         />
       </div>
-      {(typeof weather.main != "undefined") ? (
-      <div className='meteo-item-card'>
-        <div className='first-box'>
-          <p className='Temp'>{Math.round(weather.main.temp)}°</p>
-          <img className='Logo' src={`logo${weather.weather[0].icon}`} alt=""/>
-        </div>
-        <div className='second-box'>
-          <div className='city-box'>
-            <img className='Marker' src={Marker} alt='Marker'/>
-            <p className='City'>{weather.name}, {weather.sys.country}</p>
+      {typeof weather.main != 'undefined' ? (
+        <div>
+          <div className='meteo-item-card'>
+            <div className='first-box'>
+              <p className='Temp'>{Math.round(weather.main.temp)}°</p>
+              <img
+                className='Logo'
+                src={
+                  'http://openweathermap.org/img/w/' +
+                  weather.weather[0].icon +
+                  '.png'
+                }
+                alt=''
+              />
+            </div>
+            <div className='second-box'>
+              <div className='city-box'>
+                <img className='Marker' src={Marker} alt='Marker' />
+                <p className='City'>
+                  {weather.name.includes('Arrondissement de')
+                    ? weather.name.replace('Arrondissement de', '')
+                    : weather.name}
+                  , {weather.sys.country}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className='meteoListItem'>
+            <p className='City'>Mardi</p>
+            <img
+                className='logoList'
+                src={
+                  'http://openweathermap.org/img/w/' +
+                  weather.weather[0].icon +
+                  '.png'
+                }
+                alt=''
+              />
+              <p className='tempList'>{Math.round(weather.main.temp)}°</p>
+          </div>
+          <div className='meteoListItem2'>
+            <p className='City'>Mercredi</p>
+            <img
+                className='logoList'
+                src={
+                  'http://openweathermap.org/img/w/' +
+                  weather.weather[0].icon +
+                  '.png'
+                }
+                alt=''
+              />
+              <p className='tempList'>{Math.round(weather.main.temp)}°</p>
           </div>
         </div>
-      </div>
-      ) : ''}
+      ) : (
+        ''
+      )}
     </div>
-  )
-};
+  );
+}
 
 export default MeteoItem;
