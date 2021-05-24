@@ -23,36 +23,12 @@ import axios from 'axios';
 import Marker from './icons/location-pin.png';
 import { useState, useEffect } from 'react';
 
-const logoMeteo = {
-  dataLogo01d: logo01d,
-  dataLogo01n: logo01n,
-};
-
 const api = {
   key: '01698a252afb4707d33caaa8928240ad',
   base: 'https://api.openweathermap.org/data/2.5/',
 };
 
 function MeteoItem() {
-  // User Location
-  /*const [center, setCenter] = useState({});
-  useEffect(() => {
-    if ('geolocation' in navigator) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          setCenter({
-            loaded: true,
-            lat: position.coords.latitude,
-            lng: position.coords.longitude,
-          });
-        },
-        function b(error) {
-          // eslint-disable-next-line no-console
-          console.error(`error ${error.code} ${error.message}`);
-        }
-      );
-    }
-  }, []);*/
 
   const [query, setQuery] = useState('');
   const [weather, setWeather] = useState({});
@@ -60,11 +36,12 @@ function MeteoItem() {
   const search = (event) => {
     if (event.key === 'Enter') {
       axios
-        .get(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
+        .get(`${api.base}weather?q=${query}&units=metric&appid=${api.key}`)
         .then((response) => response.data)
         .then((data) => {
           setQuery('');
           setWeather(data);
+          console.log(weather)
         });
     }
   };

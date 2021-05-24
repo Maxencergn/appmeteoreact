@@ -11,6 +11,8 @@ body {
   background-size: cover;
   background-position: bottom;
   transition: 0.4 ease-out;
+  width: 400px;
+  margin: auto;
 }
 
 
